@@ -63,11 +63,7 @@ Our focus is on open source solutions, such that when conclusions based on the c
 
 We only consider the properties of underlying technologies directly relevant to the credential profile and what those properties mean for the properties of the credential profile. Based on this criterium, we place exchange protocols out of scope, including the possibility for offline verification of credentials, as this is a property emerging from the exchange protocol. A property can also manifest itself on different levels of the ToIP technology stack, or on a governance level. In the comparison matrix, only the property on the credential profile level are considered.
 
-> [To be discussed: add a definition/overview of he different aspects, e.g format, signing algorthim, ...?](/AqZvZR3rRcGg02oMrtFNaw)
-
-The credential format and the signature algorithm are in scope, as the choice in these technologies directly impact the properties of the credential profile.
-> [To be discussed: is revocation and key management in scope?](/AqZvZR3rRcGg02oMrtFNaw)
-
+The credential format and the signature algorithm are in scope, as the choice in these technologies directly impact the properties of the credential profile. This also holds for key management and revocation mechanisms.
 
 ## Results
 The [credential profile comparison matrix](https://docs.google.com/spreadsheets/d/1Z4cYfjbbE-rABcfC-xab8miocKLomivYMUFibOh9BVo) is maintained as a living spreadsheat in google sheets. In the following sections we will describe the properties in the comparison matrix. Some properties are present in various tables and will be discussed first.
@@ -106,10 +102,6 @@ The Technology Readiness Level (TRL) is a measurement for the maturity of a tech
 More information on TRL can be found [here](https://www.nasa.gov/directorates/heo/scan/engineering/technology/technology_readiness_level).
 
 The TRL of various technologies in the matrix (credential format, signing algorithm) are given and are based on the implementation support for that technology.
-
-> [Check whether there are more criteria to determine the TRL:](/eCQxIbz4SsmIybwkDtOKCQ) 
-
-
 
 ### Properties of Credential Format
 Apart form the common properties, the matrix provides information for the credential format on selective disclosure, predicates and crypto-agility. These properties will be described in the following sections.
@@ -174,84 +166,28 @@ Hardware support is required for regulated and highsecurity usecases to prevent 
 Unlinkability is the property that an attacker cannot distinguish whether two or more items withinin a system (comprising these and possibly other items) are related or not. Within an identity ecosystem this applies for example that one verifier can link two credentials of an holder, two selective disclosures of the same credential or whether two colluding verifiers can link two seperate presentations of the same credential. This excludes the fact that linkability can also happen by the reavealed attributes themselves or unlinkability achieved by the infrastructure, e.g. just-in-time issuance.
 
 #### Post-Quantum Security
-With the computing power of quantum computers advancing, we need to think about post-quantum security with regard to SSI. Using our current signature algorithms, it allows attackers in the future after quantum computers have become computationally efficient enough to issue themselves credentials like they are issued right now. So Eve can issuer herself a university degree years from now, making it look like the credential was issued in 2022 by her university, as she can easily create the signature using a quantum computer.
+With the computing power of quantum computers advancing, we need to think about post-quantum security with regard to SSI. Most widely used signature algorithms are not post-quantum secure and allow attackers after quantum computers have become computationally efficient enough to issue themselves credentials like they are issued right now by a recognized entity. So Eve can issue herself a university degree years from now, making it look like the credential was issued in 2022 by her university, as she can easily create the signature using a quantum computer.
 
 In the comparison matrix, with regard to cryptography, we discuss signatures and their properties: selective disclosure and predicates. Currently, there are no common credential profiles that use signature algorithms that are post-quantum safe. NIST has recently announced their choice in [post-quantum safe signature algorithms](https://csrc.nist.gov/projects/pqc-dig-sig). The question is whether with these algorithms selective disclosure and predicates can still be provided. Predicates can still be achieved through post-quantum safe zero-knowledge proofs, such as zk-STARK and Aurora. For selective disclosure, it is not clear yet whether it can still be achieved through the post-quantum safe signature algorithm.
 
 
 #### Performance
+The performance of signature algorithms can impact the user-friendliness of the wallet implementing the credential profile. We express the generation of the signature in terms of seconds.
 
 ## Discussion
-### notes, outcomes
-The matrix sparked a deep discussion on existing revocation mechanisms and their limitations, potential attacks, and ways to resolve these issues.
-
-Future work --> For technical decision makers and explorers, it would be good to be able to also find out whether certain combinations are not possible (and why). In the future it is possible to write a programm that allows to generate all possibilities.
+The credential comparison matrix is a work in progress. The matrix will become completer through validation within the SSI community. It has already sparked deep and interesting discussions on existing revocation mechanisms and their limitations, potential attacks, and ways to resolve these issues. 
 
 ### Objectivity and Subjectivity
+We have tried  to be as objective as possible while filling in the matrix, but this was difficult for characteristics such as the complexity of existing implementations and the technology readiness level. We have tried to solve this by giving examples, such that the reader can follow our reasoning.
 
-Objective and subjective aspects are in the matrix --> try to be as objective as possible, where it becomes more subjective e.g. how complex the implementation is, we will give examples.
+## Summary
 
-
-## Notes
-### To Dos
-
-TODO: need to streamline the use of *credentials* versus *verifiable credentials* across the paper and the matrix
-
-TODO: add a definition/overview of the different properties of the profiles in the [scope](##Scope) section: credential format, signing algorthim, revocation mechanisms, key management systems.
-
-TODO: revisit the **key management** property. There are now categories included that are not on the same level. E.g. a X.509 certificate and did:ion may both say something *about* key management, but not at the same level. A X.509 certificate is used to bind a public key to other attributes of the certificate holder. That is typically used establish trust in the certificate holder. 
-Proposal: add another category for trust management. Examples include X.509, ETSi Trusted Lists, TRAIN.
-
-TODO: Need to include information on existing libraries, SDKs for different programming languages and frameworks. Maybe at the top level, when selecting a credential profile to see whether there are existing libraries/SDKs -> Torsten
-
-TODO: Just because the credential format supports crypto agility, it does not mean that all functions are still supported (JSON-LD with BBS+ signatures supports selective disclosure, but JSON-LD and JWT-VC do not. It would when selective disclosure is done via. hash-trees that are independant from the signature algorithm, etc) 
-
-TODO: credential format: supporting of multi-signature (adding a list of signatures to a claim. maybe used as issuer where multiple entitites have to sign)
-
-TODO: mixing up in the revocation list, add the recovation type (accumulator based, bitstring based). Describe how the expires date can be used to make it more secure
-
-TODO: traceability when using json ld when hosting the json schema including a unique identitifier in each credential.
-
-TODO: add solution strategies for some of the credential format limitations (e.g. hardware binding and AC, unlinkability and SD-JWTs, selective disclosure and JWTs)
-
-TODO: add IRMA to credential profiles
-
-TODO: add source of credential profile: where is this profile used? (e.g. wallet)
- 
-
-### Done
-
-TODO: Should we add a new column for encoding at I15? Relevant since json, json-ld or cbor (https://www.w3.org/TR/vc-tdata-model/#syntaxes)
-
-## Archive
-
-<!-- ## Purpose: The reason for this artifact.
-The work result is important because it allows a fact-based, more objective discussion of different credential profiles. There are multiple specifications of credentials out there with their strengths and disadvantages. Depending on the use case there are different demands and the comparison matrix can help to make the right credential profile decision.<!-- ## Audience & Impact: Beneficiaries of the work.  It supplies an assessment tool to help innovators, industry, developers, security researchers, and in general people that want to use credentials in their use cases:
-1. Explore and understand the technical landscape;
-2. Explore technical opportunities and challenges;
-3. Make informed and explicit technical and use case design choices. -->
-
-
-
-<!--## Creative Brief
-Questions:
-* Who's your audience?
-* What change in their behavior do you want to induce? (Call to Action)
-* What are the key points you're going to include?
-The artifact's features make it interesting for various stakeholder groups. The specific target groups that have been considered when the artifact was created and what benefit they will be able to draw from it are discussed in the following: 
-* Community experts. Thought leaders of the identity and trust services community get together to share their expert knowledge, collect and preserve it in a joint repository and entertain a discussion around it.
-* Technology innovators. Those who are able and willing to follow the leading edge of the verifiable credential space can take more than a gut-based decision which technology to deploy in their innovation.
-* Industry leaders. Decision takers on executive level who have a technical background and interested in the verifiable credential space can judge the relevance for their industry or business domain.
-* Policymakers and regulators. Decisionmakers and their technically capable advisors can evaluate possible technologies and the implications of their implementation for their governmental use cases and mandates.
-* Software developers. Highly technical audiences can dive deep into particular aspects of verifiable credentials and understand which properties they need to include in the application software they are creating.
-* Security researchers. Security-oriented audiences can find out details of security mechanisms and cryptographic procedures in a credential profile, which is relevant for independent vetting of verifiable credentials.
-* Others! Anyone considering deploying verifiable credentials in their use cases will gain rich insights into the matter and benefit from the expertise brought in by the content contributors and expert discussion outcomes.
-
-
-As a summary, the artifact has
+The credential comparison matrix has multiple functions:
 * an *education function*, i.e. it is a means for getting a better understanding of credentials and a wide variety of inherent aspects, some of them highly technical, others business and application related, and
 * a *discussion facilitation function*, i.e. a concise and comprehensive repository of facts about credentials allowing and facilitating an objective comparison and discussion, and 
 * a *decision support function*, i.e. a tool for comparing properties and finding the right approach for a specific use case in question.-->
- 
+
+Please contact us if you have any suggestions or you want to contribute.
+
 <!--## Links
 Google table with comparison matrix: https://docs.google.com/spreadsheets/d/1Z4cYfjbbE-rABcfC-xab8miocKLomivYMUFibOh9BVo-->
