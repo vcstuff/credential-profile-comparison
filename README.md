@@ -174,6 +174,41 @@ In the comparison matrix, with regard to cryptography, we discuss signatures and
 #### Performance
 The performance of signature algorithms can impact the user-friendliness of the wallet implementing the credential profile. We express the generation of the signature in terms of seconds.
 
+### Revocation Algorithm
+Revocation is when the issuer no longer vouches for the correctness of the information in the credential that was issued to the holder. A reason for revocation could be that the information in the credential is simply not true anymore (holder is not a student anymore) or the information has to be periodically renewed (like a passport).
+
+#### Category
+There exist different approaches to revoke credentials, such as bitlists, deny-lists and accumulators. A bitlist is a list where each issued credential has a position in the list. The verifier can then check this position to see whether the credential has been revoked or not. A deny-list is like a block list, each revoked credential is added to the list. A cryptographic accumulator is a cryptographic proof the holder generates and presents to the verifier to show that the credential has not been revoked.
+
+#### Observability
+To check whether the credential is revoked or not, the verifier thus consults a list (under control of the issuer) or receives a proof from the holder. Observability is about whether the verifier can still check the revocation status of the credential after the presentation transaction with the concerned holder.
+
+#### Traceability
+This property is about whether an issuer can observe a verifier checking that a certain credential has been revoked. This would pose a threat to issuer unlinkability.
+
+#### Offline Friendliness
+In some use cases presentations have to be verified in an offline setting, such as when presenting a mobile driving licenses to a police officer on the road. The verifier should then also be able to check the revocation status of the credential. This property defines whether a revocation algorithm allows for an offline workflow. 
+
+### Key Management 
+To have interaction with a different party, for example to exchange credentials or presentations, you have to be able to authenticate the other party. This means that parties need identifiers that are typically bounded to the party's public key, which allows for authentication of that party through a challenge-response.
+
+#### Infrastructure for Key Resolution
+Some key management systems require an infrastructure to resolve public keys and / or to validate the binding of the identifier to the key. Examples of such an infrastructure are witness networks, DLTs or web servers.
+
+#### Key Rotation
+It can be beneficial to rotate keys every once in a while for freshness, but also allowing for generating a new key pair for when the old pair was compromised. This property defines whether the public key in a credential can be replaced by a new one.
+
+#### Key History
+
+#### Party
+The credential profile comparison matrix also indicates which party (issuer vs holder) can use a certain key management system.
+
+### Trust Management
+In the trust triangle, the verifier has to have a certain amount of trust in the issuer in order to accept the presentation of the holder, based on a credential issued by the issuer to the holder.
+
+#### Description
+For each method, we list a description on what the approach to trust management is.
+
 ## Discussion
 The credential comparison matrix is a work in progress. The matrix will become completer through validation within the SSI community. It has already sparked deep and interesting discussions on existing revocation mechanisms and their limitations, potential attacks, and ways to resolve these issues. 
 
