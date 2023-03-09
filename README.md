@@ -201,7 +201,7 @@ It can be beneficial to rotate keys every once in a while for freshness, but als
 Even though key rotation means that no new credentials will be connected to that key, it does not necessarily mean that the credentials linked to a deprecated key are invalid. This property is about whether a history of deprecated keys related to a certain identifier can be retained and obtained, allowing for the verification of older credentials.
 
 #### Party
-The credential profile comparison matrix also indicates which party (issuer versus holder) can use a certain key management system.
+The credential profile comparison matrix also indicates which party (issuer versus holder) can use a certain key management system. Not all types of identifiers are desirable to use for both issuer and holder. Issuer keys need to be publicly verifiable and stable, whereas a key for holder binding only needs to be used by a single credential (or a couple of them) under a certain holder’s control.
 
 ### Properties of Trust Management
 As displayed in the trust triangle, the verifier has to have a certain amount of trust in the issuer in order to accept the presentation of the holder, based on a credential issued by the issuer to the holder.
