@@ -65,8 +65,8 @@ We only consider the properties of underlying technologies directly relevant to 
 
 The credential format and the signature algorithm are in scope, as the choice in these technologies directly impact the properties of the credential profile. This also holds for key management and revocation mechanisms.
 
-## Results
-The [credential profile comparison matrix](https://docs.google.com/spreadsheets/d/1Z4cYfjbbE-rABcfC-xab8miocKLomivYMUFibOh9BVo) is maintained as a living spreadsheat in google sheets. In the following sections we will describe the properties in the comparison matrix. Some properties are present in various tables and will be discussed first.
+## Guide
+The [credential profile comparison matrix](https://docs.google.com/spreadsheets/d/1Z4cYfjbbE-rABcfC-xab8miocKLomivYMUFibOh9BVo) is maintained as a living spreadsheat in google sheets. In the following sections we will describe the properties listed in the comparison matrix. Some properties are present in various tables. We will discuss these first. Then we will list the properties specific to the credential format, signature algorithm, revocation algorithm, key management and trust management. 
 
 ### Common Properties
 <!--explain why some properties emerge from signature/revoation algo-->
@@ -170,11 +170,10 @@ With the computing power of quantum computers advancing, we need to think about 
 
 In the comparison matrix, with regard to cryptography, we discuss signatures and their properties: selective disclosure and predicates. Currently, there are no common credential profiles that use signature algorithms that are post-quantum safe. NIST has recently announced their choice in [post-quantum safe signature algorithms](https://csrc.nist.gov/projects/pqc-dig-sig). The question is whether with these algorithms selective disclosure and predicates can still be provided. Predicates can still be achieved through post-quantum safe zero-knowledge proofs, such as zk-STARK and Aurora. For selective disclosure, it is not clear yet whether it can still be achieved through the post-quantum safe signature algorithm.
 
-
 #### Performance
 The performance of signature algorithms can impact the user-friendliness of the wallet implementing the credential profile. We express the generation of the signature in terms of seconds.
 
-### Revocation Algorithm
+### Properties of Revocation Algorithm
 Revocation is when the issuer no longer vouches for the correctness of the information in the credential that was issued to the holder. A reason for revocation could be that the information in the credential is simply not true anymore (holder is not a student anymore) or the information has to be periodically renewed (like a passport).
 
 #### Category
@@ -189,7 +188,7 @@ This property is about whether an issuer can observe a verifier checking that a 
 #### Offline Friendliness
 In some use cases presentations have to be verified in an offline setting, such as when presenting a mobile driving licenses to a police officer on the road. The verifier should then also be able to check the revocation status of the credential. This property defines whether a revocation algorithm allows for an offline workflow. 
 
-### Key Management 
+### Properties of Key Management 
 To have interaction with a different party, for example to exchange credentials or presentations, you have to be able to authenticate the other party. This means that parties need identifiers that are typically bounded to the party's public key, which allows for authentication of that party through a challenge-response.
 
 #### Infrastructure for Key Resolution
@@ -199,12 +198,13 @@ Some key management systems require an infrastructure to resolve public keys and
 It can be beneficial to rotate keys every once in a while for freshness, but also allowing for generating a new key pair for when the old pair was compromised. This property defines whether the public key in a credential can be replaced by a new one.
 
 #### Key History
+Even though key rotation means that no new credentials will be connected to that key, it does not necessarily mean that the credentials linked to a deprecated key are invalid. This property is about whether a history of deprecated keys related to a certain identifier can be retained and obtained, allowing for the verification of older credentials.
 
 #### Party
-The credential profile comparison matrix also indicates which party (issuer vs holder) can use a certain key management system.
+The credential profile comparison matrix also indicates which party (issuer versus holder) can use a certain key management system.
 
-### Trust Management
-In the trust triangle, the verifier has to have a certain amount of trust in the issuer in order to accept the presentation of the holder, based on a credential issued by the issuer to the holder.
+### Properties of Trust Management
+As displayed in the trust triangle, the verifier has to have a certain amount of trust in the issuer in order to accept the presentation of the holder, based on a credential issued by the issuer to the holder.
 
 #### Description
 For each method, we list a description on what the approach to trust management is.
@@ -220,7 +220,7 @@ We have tried  to be as objective as possible while filling in the matrix, but t
 The credential comparison matrix has multiple functions:
 * an *education function*, i.e. it is a means for getting a better understanding of credentials and a wide variety of inherent aspects, some of them highly technical, others business and application related, and
 * a *discussion facilitation function*, i.e. a concise and comprehensive repository of facts about credentials allowing and facilitating an objective comparison and discussion, and 
-* a *decision support function*, i.e. a tool for comparing properties and finding the right approach for a specific use case in question.-->
+* a *decision support function*, i.e. a tool for comparing properties and finding the right approach for a specific use case in question.
 
 Please contact us if you have any suggestions or you want to contribute.
 
