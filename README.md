@@ -13,16 +13,11 @@ In this paper, a *comparison matrix* for the wide variety of credential formats 
 
 This work is the outcome of a collaborative writing session during RWOT11 in September 2022, and continues the work kicked off in an IIWXXIV session in April 2022 and worked on offline afterwards. The work should be considered an iterative process, with the matrix being a living document that will require continuous updating while facilitating discussion among technical and non-technical experts.
 
-
-
 ## Keywords
 Verifiable Credentials, Credential Format, Credential Profile, Signing Algorithm, Revocation Mechanism, Key Management, SSI Components, ToIP Layer 3, Comparison Matrix, Anoncreds, mDl, Zero Knowledge Proofs
 
-
-
-
 ## Introduction
-There is an increasing agreement among technical experts as well as industry leaders and governmental agencies and regulators that Verifiable Credentials (VCs) are needed and a most useful means to enable broad digitalization. VCs allow for moving around data between parties under full control of data subjects securely and are increasingly discussed and implemented in both private and public industries.
+There is an increasing agreement among technical experts as well as industry leaders and governmental agencies and regulators that Verifiable Credentials (VCs) are needed and a most useful means to enable broad digitalization. VCs allow for moving around data between parties under full control of data subjects securely and are increasingly discussed and implemented in both private and public sector.
 
 Especially among technical experts, there appears to be a shared understanding of the advantages and disadvantages of various types of VCs. However, where technical specifications oftentimes refer to these VCs by a single common denomination, such as AnonCreds or W3C JSON-LD VC, a lot of technical and non-technical underpinnings, assumptions, and prerequisites remain inexplicit. 
 
@@ -36,21 +31,20 @@ As such, the matrix can serve as an tool to fulfill three functions for innovato
 2. a *discussion facilitation function*, i.e. a concise and comprehensive repository of facts about credentials allowing and facilitating an objective comparison and discussion, and;
 3. a *decision support function*, i.e. a tool for comparing properties and finding the right approach for a specific use case in question.
 
-
 In this paper, we aim to describe the rationale behind the credential profile matrix, how it was constructed, and how it is intended to facilitate informed technical and non-technical decision making. This [introduction]() highlighted the need for a deeper and more accessible analysis of the various credential types and their technological underpinnings, requirements and implementations. In the [methodological section](#Methodology) section, we will briefly outline the process in constructing the profile comparison matrix and the methodological choices that were made in defining the targeted stakeholders. In the [results section](#Results), we will summarize the properties that have been included in the profile comparison matrix and their definitions. Finally, in the [discussion](#Discussion) we will highlight several preliminary lessons learned and outline a path to move this initiative forward.
 
 ## Methodology
-For the creation of the credential profile matrix, a group of domain experts gathered first at the Internet Identity Workshop in its 34th incarnation (IIWXXIV) in Mountain View in April 2022. They kicked off with listing to experts for different VC types and formats, starting to gather data in a structured way, to ultimately be able to compare them in defined categories. This lead to a definition for credential profile: a configuration the credential format, signing algorithm, revocation algorithm and key management. These properties are then further drilled down, e.g. looking at technical traits like selective disclosure, crypto agility, or hardware support, and adoption criteria like standardization, technology readiness level, or implementation support. 
+For the creation of the credential profile matrix, a group of domain experts gathered first at the Internet Identity Workshop in its 34th incarnation (IIWXXIV) in Mountain View in April 2022. They kicked off with listening to experts for different VC types and formats, starting to gather data in a structured way, to ultimately be able to compare them in defined categories. This lead to a definition for credential profile: a configuration the credential format, signing algorithm, revocation algorithm and key management. These properties are then further drilled down, e.g. looking at technical traits like selective disclosure, crypto agility, or hardware support, and adoption criteria like standardization, technology readiness level, or implementation support. 
 
 For example, what is typically refered to as AnonCreds resolves to the credential profile "AnonCreds + CL + Indy Revocation + did:indy + link secrets".
 
-The work of the expert group has continued after the event in dedicated working sessions. At RWOT11 in September 2022 was used to work on both matrix in structure and context and the accompanying paper. For completeness and correctness, the comparison matrix will be validated within the SSI community. This implies that this application guideline is a living document, as we might encounter more interesting properties while validating the comparison matrix.
+The work of the expert group has continued after the event in dedicated working sessions. RWOT11 in September 2022 was used to work on the structure and content of the matrix as well as on this accompanying paper. For completeness and correctness, the comparison matrix will be validated within the community of people interested in and working on SSI, Verifiable Credentials, and Decentralized Identity. This implies that this application guideline is a living document, as we might encounter more interesting properties while validating the comparison matrix.
 
 ### Stakeholder Selection
 The comparison matrix is meant to provide value to various stakeholder groups. The specific target groups and what benefit they will be able to draw from it are discussed below.
 * Community experts. Thought leaders of the identity and trust services community get together to share their expert knowledge, collect and preserve it in a joint repository and entertain a discussion around it.
 * Technology innovators. Those who are able and willing to follow the leading edge of the verifiable credential space can take more than a gut-based decision which technology to deploy in their innovation.
-* Industry leaders. Decision takers on executive level who have a technical background and interested in the verifiable credential space can judge the relevance for their industry or business domain.
+* Industry leaders. Decision takers on executive level who have a technical background and are interested in the verifiable credential space can judge the relevance for their industry or business domain.
 * Policymakers and regulators. Decisionmakers and their technically capable advisors can evaluate possible technologies and the implications of their implementation for their governmental use cases and mandates.
 * Software developers. Highly technical audiences can dive deep into particular aspects of verifiable credentials and understand which properties they need to include in the application software they are creating.
 * Security researchers. Security-oriented audiences can find out details of security mechanisms and cryptographic procedures in a credential profile, which is relevant for independent vetting of verifiable credentials.
@@ -69,14 +63,12 @@ The credential format and the signature algorithm are in scope, as the choice in
 The [credential profile comparison matrix](https://docs.google.com/spreadsheets/d/1Z4cYfjbbE-rABcfC-xab8miocKLomivYMUFibOh9BVo) is maintained as a living spreadsheat in google sheets. In the following sections we will describe the properties listed in the comparison matrix. Some properties are present in various tables. We will discuss these first. Then we will list the properties specific to the credential format, signature algorithm, revocation algorithm, key management and trust management. 
 
 ### Common Properties
-<!--explain why some properties emerge from signature/revoation algo-->
 Various properties are applicable to different tables in the matrix. The properties will be discussed in the following sections.
 
 #### Intellectual Property Rights
 Information on the status of patents and knowledge of possible IP rights are important for the adoption of new technologies. The document lists the known status of existing or expired patents or links to the IPR Policies that were in effect for the creation of standards and specifications. The existence of IPR policies however does not guarantee the non-existence of patents from parties that were not involved in the process.
 
 #### Specification
-
 Specifications are essential for interoperability and security assessments. Whenever specifications are publicly available then a link should be provided.
 
 #### Standardization
@@ -87,7 +79,6 @@ and which working group the technology is standardized. It also described what t
 For developers it is important to know to what extent the technology has been implemented. Therefore information is provided on which or how many software libraries are available. 
 
 #### Technology Readiness Level
-
 The Technology Readiness Level (TRL) is a measurement for the maturity of a technology developed by NASA. The values range from 1 to 9 with increasing values meaning increased maturity. In short these levels describe:
  - TRL 1: scientific research is beginning and those results are being translated into future research and development
  - TRL 2: basic principles have been studied and practical applications can be applied to those initial findings, little to no experimental proof of concept for the technology
@@ -107,12 +98,12 @@ The TRL of various technologies in the matrix (credential format, signing algori
 Apart form the common properties, the matrix provides information for the credential format on selective disclosure, predicates and crypto-agility. These properties will be described in the following sections.
 
 #### Selective Disclosure
-Selective disclosure allows a holder to present a subset of the attributes of the credential issued by the issuer. This minimizes the amount of the holder's information that is shared with the issuer. For example, the government issues a passport credential to Alice. The passport includes a variety of attributes, such as Alice's first name, last name, birthdate, social security number, et cetera. When Alice want to buy alcohol at the supermarket, she has to prove to the supermarket that she is of legal drinking age ($18+$) to buy alcohol. In the classical setting where Alice shows her passport to the supermarket, the supermarket sees all the attributes on her passport, even though they just need her birthdate. Using SSI with selective disclosure, she can simply present her birthdate with which the supermarket can verify that she is over $18$.
+Selective disclosure allows a holder to present a subset of the attributes of the credential issued by the issuer. This minimizes the amount of the holder's information that is shared with the issuer. For example, the government issues a passport credential to Alice. The passport includes a variety of attributes, such as Alice's first name, last name, birthdate, social security number, et cetera. When Alice want to buy alcohol at the supermarket, she has to prove to the supermarket that she is of legal drinking age ($18+$) to buy alcohol. In the classical setting where Alice shows her passport to the supermarket, the supermarket sees all the attributes on her passport, even though they just need her birthdate. Using a Credential format selective disclosure capabilities, she can simply present her birthdate with which the supermarket can verify that she is over $18$.
 
-Selective disclosure can be achieved through the use of a signature algorithm that supports selective disclosure, such as BBS+ and CL signatures. Selective disclosure can also be achieved through governance, namely a community can agree on signing each attribute seperately, such that each attribute can also be presented seperately. As mentioned before, in our matrix we only look at choices on credential profile level, hence we only look at whether selective disclosure is achieved through the signature algorithm.
+Selective disclosure can be achieved through the use of a signature algorithm that supports selective disclosure, such as BBS+ and CL signatures, or by using a salted hash approach in the credential format's design. In the latter case, the salted hashes of the claims that can potentially be selectively disclosed are signed by the credential issuer (not the claims itself). The holder will then present the credential containing the signed hashes along with the actual claim values she wants to disclose and the verifier needs to check whether the disclosed values produce the same hash (i.e. are the values asserted by the credential issuer). 
+Selective disclosure can also be achieved through governance, namely a community can agree on signing each attribute seperately, such that each attribute can also be presented seperately. As mentioned before, in our matrix we only look at choices on credential profile level, hence we only look at whether selective disclosure is achieved through the signature algorithm.
 
 #### Predicates
-
 Predicates allow the holder to further decrease the amount of information shared with the holder. Predicates check a value against a certain condition, resulting in true or false. Recall the example of Alice wanting to buy alcohol in the supermarket. Alice can prove that she is older than 18 using the predicate _age_ $\geq 18$. As Alice's age is $20$, the predicate $20 \geq 20$ is true. This way Alice can prove that she is allowed to buy alcohol without revealing her birthdate or even her age. 
 
 Just like selective disclosure, predicates can be created on various levels. On a governance level, the issuer could issue common predicates to holders, such as $18+$ and $65+$. In the matrix, we only consider predicates through the capability of performing Zero-Knowledge Proofs in the credential profile. 
@@ -154,15 +145,12 @@ where `NSxma92am2s8wnnxz8` is the unique identifier for a credential that is use
 Apart form the common properties, the matrix provides information for the signature algorithm on hardware support and unlinkability. These properties will be described in the following sections.
 
 #### Recognition by Government Organizations
-
 For regulated usecases, the national regulation agencies provide a list of recommended and accepted cryptographic algorithms, e.g. BSI TR-2102, NIST-xxx? This property describes whether the designated signature algorithm is recommended by national government agencies.
 
 #### Hardware Support
-
 Hardware support is required for regulated and highsecurity usecases to prevent credential/key duplication and theft. Existing hardware stores to sign inside the smartphones are Trusted Execution Environments, SecureEncalves, SecureElements and eUICCs, external authenticators and more. In the backend HSMs or TPMs can be used by issuers or Cloud-Wallets to secure the keys. The hardware-backed crypto processors often support only a limited set of established signature algorithms, therefore the use of modern cyrptography algorithms is limited for these use cases.
 
 #### Unlinkability
-
 Unlinkability is the property that an attacker cannot distinguish whether two or more items withinin a system (comprising these and possibly other items) are related or not. Within an identity ecosystem this applies for example that one verifier can link two credentials of an holder, two selective disclosures of the same credential or whether two colluding verifiers can link two seperate presentations of the same credential. This excludes the fact that linkability can also happen by the reavealed attributes themselves or unlinkability achieved by the infrastructure, e.g. just-in-time issuance.
 
 #### Post-Quantum Security
@@ -216,7 +204,6 @@ The credential comparison matrix is a work in progress. The matrix will become c
 We have tried  to be as objective as possible while filling in the matrix, but this was difficult for characteristics such as the complexity of existing implementations and the technology readiness level. We have tried to solve this by giving examples, such that the reader can follow our reasoning.
 
 ## Summary
-
 The credential comparison matrix has multiple functions:
 * an *education function*, i.e. it is a means for getting a better understanding of credentials and a wide variety of inherent aspects, some of them highly technical, others business and application related, and
 * a *discussion facilitation function*, i.e. a concise and comprehensive repository of facts about credentials allowing and facilitating an objective comparison and discussion, and 
